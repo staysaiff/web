@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Successful</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to bottom, #4d4d4d, #000000);
+        }
+        .output-container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            text-align: center;
+        }
+        .output-container h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .output-container p {
+            font-size: 14px;
+            color: #333;
+            margin: 10px 0;
+        }
+        .output-container span {
+            font-weight: bold;
+        }
+        .home-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            text-decoration: none;
+        }
+        .home-button:hover {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+    <a href="home.html" class="home-button">Home</a>
+    <div class="output-container" id="outputContainer">
+        <h2>Registration Successful!</h2>
+        <p><span>Full Name:</span> <span id="outputFullName"></span></p>
+        <p><span>Email:</span> <span id="outputEmail"></span></p>
+        <p><span>Phone:</span> <span id="outputPhone"></span></p>
+        <p><span>Gender:</span> <span id="outputGender"></span></p>
+        <p><span>Membership:</span> <span id="outputMembership"></span></p>
+        <p><span>Reason:</span> <span id="outputMessage"></span></p>
+    </div>
+    <script>
+        // Retrieve data from localStorage
+        const formData = JSON.parse(localStorage.getItem('registrationData'));
+
+        if (formData) {
+            document.getElementById('outputFullName').textContent = formData.fullName;
+            document.getElementById('outputEmail').textContent = formData.email;
+            document.getElementById('outputPhone').textContent = formData.phone;
+            document.getElementById('outputGender').textContent = formData.gender;
+            document.getElementById('outputMembership').textContent = formData.membership;
+            document.getElementById('outputMessage').textContent = formData.message;
+        } else {
+            document.getElementById('outputContainer').textContent =
+                'No registration data found.';
+        }
+    </script>
+</body>
+</html>
